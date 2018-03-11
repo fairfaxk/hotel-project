@@ -1,12 +1,12 @@
-package com.example.hotelsite;
+package com.hotelsite;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HotelsiteApplication {
+public class HotelAppBootMain {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HotelsiteApplication.class, args);
+		SpringApplication.run(HotelAppBootMain.class, args);
 	}
 }
