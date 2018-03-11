@@ -13,5 +13,5 @@ public interface ReservationRepository extends MongoRepository<Reservation, Stri
 	public List<Reservation> findByCostGreaterThan(double num);
 	public Reservation findByReservationNumber(String resNum);
 	public List<Reservation> findByHotelName(String hotelName);
-	public Reservation deleteByReservationNumber(String reservationNumber);
+	public void deleteByReservationNumber(String reservationNumber);
 }

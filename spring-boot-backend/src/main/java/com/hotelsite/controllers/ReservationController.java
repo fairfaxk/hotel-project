@@ -120,8 +120,8 @@ public class ReservationController {
 	 * @return
 	 */
 	@DeleteMapping("deleteReservation/{reservationNumber}")
-	public Reservation deleteReservation(@PathVariable("reservationNumber") String reservationNumber)
+	public void deleteReservation(@PathVariable("reservationNumber") String reservationNumber)
 	{
-		return resRepo.deleteByReservationNumber(reservationNumber);
+		resRepo.deleteByReservationNumber(reservationNumber);
 	}
 }
