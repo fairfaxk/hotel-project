@@ -11,4 +11,7 @@ import com.hotelsite.models.Reservation;
 public interface ReservationRepository extends MongoRepository<Reservation, String> {
 	public List<Reservation> findByCostLessThan(double num);
 	public List<Reservation> findByCostGreaterThan(double num);
+	public Reservation findByReservationNumber(String resNum);
+	public List<Reservation> findByHotelName(String hotelName);
+	public Reservation deleteByReservationNumber(String reservationNumber);
 }

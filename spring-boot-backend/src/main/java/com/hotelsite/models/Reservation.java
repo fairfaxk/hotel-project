@@ -7,7 +7,7 @@ public class Reservation extends Booking {
 
 	private boolean paid;
 	private String hotelName;
-	private int roomNumber;
+	private String roomNumber;
 	private double cost;
 	private String reservationNumber;
 
@@ -27,11 +27,11 @@ public class Reservation extends Booking {
 		this.hotelName = hotelName;
 	}
 
-	public int getRoomNumber() {
+	public String getRoomNumber() {
 		return roomNumber;
 	}
 
-	public void setRoomNumber(int roomNumber) {
+	public void setRoomNumber(String roomNumber) {
 		this.roomNumber = roomNumber;
 	}
 
