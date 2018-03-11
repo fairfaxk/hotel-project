@@ -2,12 +2,9 @@ package com.hotelsite.models;
 
 import java.util.Date;
 
-import org.springframework.data.annotation.Id;
-
 public class Booking {
 	
-	@Id
-	private String id;
+	private String reservationNumber;
 	private Date dateFrom;
 	private Date dateTo;
 
@@ -19,12 +16,12 @@ public class Booking {
 		this.dateFrom = dateFrom;
 	}
 
-	public String getId() {
-		return id;
+	public String getReservationNumber() {
+		return reservationNumber;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setReservationNumber(String id) {
+		this.reservationNumber = id;
 	}
 
 	public Date getDateTo() {

@@ -1,5 +1,6 @@
 package com.hotelsite.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -15,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hotelsite.models.Booking;
 import com.hotelsite.models.Reservation;
+import com.hotelsite.models.Room;
 import com.hotelsite.repositories.ReservationRepository;
+import com.hotelsite.repositories.RoomRepository;
 
 @RestController
 @RequestMapping("/api/reservations")
@@ -24,6 +28,9 @@ import com.hotelsite.repositories.ReservationRepository;
 public class ReservationController {
 	@Autowired
 	ReservationRepository resRepo;
+	
+	@Autowired
+	RoomRepository roomRepo;
 	
 	/**
 	 * Finds all documents in the reservations collection
@@ -80,18 +87,30 @@ public class ReservationController {
 	}
 	
 	/**
-	 * adds the reservation in request body to database
+	 * adds the reservation in request body to database. Also adds it to the room
 	 * 
 	 * @param reservation
 	 * @return
 	 */
 	@PostMapping("/addReservation")
 	public Reservation addReservation(@Valid @RequestBody Reservation reservation){
+		//Add room
+		Room room = roomRepo.findByHotelNameAndRoomNumber(reservation.getHotelName(), reservation.getRoomNumber());
+		Booking book = new Booking();
+		book.setReservationNumber(reservation.getReservationNumber());
+		book.setDateFrom(reservation.getDateFrom());
+		book.setDateTo(reservation.getDateTo());
+		List<Booking> bookings = room.getBookedDates();
+		bookings.add(book);
+		room.setBookedDates(bookings);
+		roomRepo.save(room);
+		
 		return resRepo.save(reservation);
 	}
 	
 	/**
 	 * Updates an existing reservation by passing its reservation number. Body of request must be a reservation, and if cost is unchanged, must send a negative number
+	 * Also adds it to the room
 	 * 
 	 * @param reservationNumber
 	 * @param reservation
@@ -110,6 +129,23 @@ public class ReservationController {
 			newReservation.setHotelName(reservation.getHotelName());
 		if(reservation.getRoomNumber()!=null)
 			newReservation.setRoomNumber(reservation.getRoomNumber());
+		
+		//update the booking in the room repository
+		Room room = roomRepo.findByHotelNameAndRoomNumber(reservation.getHotelName(), reservation.getRoomNumber());
+		List<Booking> bookings= new ArrayList<Booking>();
+		for(Booking book: room.getBookedDates())
+		{
+			if(book.getReservationNumber().equals(reservation.getReservationNumber()))
+			{
+				if(reservation.getDateFrom()!=null)
+					book.setDateFrom(reservation.getDateFrom());
+				if(reservation.getDateFrom()!=null)
+					book.setDateTo(reservation.getDateTo());
+			}
+			bookings.add(book);
+		}
+		room.setBookedDates(bookings);
+		roomRepo.save(room);
 		return resRepo.save(newReservation);
 	}
 	

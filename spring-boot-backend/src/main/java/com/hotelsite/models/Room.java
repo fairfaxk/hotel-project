@@ -10,7 +10,7 @@ public class Room {
 
 	@Id
 	private String id;
-	private int roomNumber;
+	private String roomNumber;
 	private String hotelName;
 	private List<Booking> bookedDates;
 	private String roomType;
@@ -24,11 +24,11 @@ public class Room {
 		this.id = id;
 	}
 
-	public int getRoomNumber() {
+	public String getRoomNumber() {
 		return roomNumber;
 	}
 
-	public void setRoomNumber(int roomNumber) {
+	public void setRoomNumber(String roomNumber) {
 		this.roomNumber = roomNumber;
 	}
 
