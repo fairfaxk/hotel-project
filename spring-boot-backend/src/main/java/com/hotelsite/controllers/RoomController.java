@@ -24,36 +24,77 @@ public class RoomController {
 	@Autowired
 	RoomRepository roomRepo;
 	
+	/**
+	 * gets all rooms in db
+	 * 
+	 * @return
+	 */
 	@GetMapping("/findAll")
 	public List<Room> findAll()
 	{
 		return roomRepo.findAll();
 	}
 	
+	/**
+	 * gets rooms of the input type in the input hotel that are availible during the input dates
+	 * 
+	 * @param hotelName
+	 * @param roomType
+	 * @param dateFrom
+	 * @param dateTo
+	 * @return
+	 */
 	@GetMapping("/findOpenRoomByType/{hotelName}{roomType}/{dateFrom}/{dateTo}")
-	public Room findOpenRoom(@PathVariable("hotelName") String hotelName, @PathVariable("roomType") String roomType, @PathVariable("dateFrom") Date dateFrom, @PathVariable("dateTo") Date dateTo)
+	public List<Room> findOpenRooms(@PathVariable("hotelName") String hotelName, @PathVariable("roomType") String roomType, @PathVariable("dateFrom") Date dateFrom, @PathVariable("dateTo") Date dateTo)
 	{
-		return roomRepo.findOpenRoomByType(roomType, dateFrom, dateTo, hotelName);
+		return roomRepo.findOpenRoomsByType(roomType, dateFrom, dateTo, hotelName);
 	}
 	
+	/**
+	 * finds the room in the input hotel with the input room number
+	 * 
+	 * @param hotelName
+	 * @param roomNumber
+	 * @return
+	 */
 	@GetMapping("/findRoomByHotelNameAndRoomNumber/{hotelName}/{roomNumber}")
 	public Room findRoomByHotelNameAndRoomNumber(@PathVariable("hotelName") String hotelName, @PathVariable("roomNumber") String roomNumber)
 	{
 		return roomRepo.findByHotelNameAndRoomNumber(hotelName, roomNumber);
 	}
 	
+	/**
+	 * finds all rooms in the input hotel
+	 * 
+	 * @param hotelName
+	 * @return
+	 */
 	@GetMapping("/findByHotelName/{hotelName}")
 	public List<Room> findByHotelName(@PathVariable("hotelName") String hotelName)
 	{
 		return roomRepo.findByHotelName(hotelName);
 	}
 	
+	/**
+	 * finds all rooms in input hotel whose nightly cost is less than or equal to the input rate
+	 * 
+	 * @param hotelName
+	 * @param num
+	 * @return
+	 */
 	@GetMapping("/findByRateLessThan/{hotelName}/{rate}")
 	public List<Room> findByHotelNameAndPriceLessThan(@PathVariable("hotelName") String hotelName, @PathVariable("rate") double num)
 	{
 		return roomRepo.findByHotelNameAndPriceLessThan(hotelName, num);
 	}
 	
+	/**
+	 * finds all rooms in input hotel whose nightly cost is greater than or equal to the input rate
+	 * 
+	 * @param hotelName
+	 * @param num
+	 * @return
+	 */
 	@GetMapping("/findByRateGreaterThan/{hotelName}/{rate}")
 	public List<Room> findByHotelNameAndPriceGreaterThan(@PathVariable("hotelName") String hotelName, @PathVariable("rate") double num)
 	{

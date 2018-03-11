@@ -87,7 +87,7 @@ public class ReservationController {
 	}
 	
 	/**
-	 * adds the reservation in request body to database. Also adds it to the room
+	 * adds the reservation in request body to database. Also adds it to the room's bookedFrom field
 	 * 
 	 * @param reservation
 	 * @return
@@ -110,7 +110,7 @@ public class ReservationController {
 	
 	/**
 	 * Updates an existing reservation by passing its reservation number. Body of request must be a reservation, and if cost is unchanged, must send a negative number
-	 * Also adds it to the room
+	 * Also adds it to the room's bookedFrom field
 	 * 
 	 * @param reservationNumber
 	 * @param reservation

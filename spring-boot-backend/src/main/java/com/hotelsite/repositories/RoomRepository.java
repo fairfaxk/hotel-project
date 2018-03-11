@@ -12,7 +12,7 @@ import com.hotelsite.models.Room;
 @Repository
 public interface RoomRepository extends MongoRepository<Room, String> {
 	@Query(value="{'roomType':?0, 'hotelName':?3, 'bookedDates': {'$not': { '$elemMatch': {'dateFrom': {'$lt': ?2}, dateTo: {$gt: ?1}}}}}")
-	public Room findOpenRoomByType(String roomType, Date dateFrom, Date dateTo, String hotelName);
+	public List<Room> findOpenRoomsByType(String roomType, Date dateFrom, Date dateTo, String hotelName);
 	
 	@Query(value="{'hotelName':?0, 'roomNumber':?1}")
 	public Room findByHotelNameAndRoomNumber(String hotelName, String roomNumber);
