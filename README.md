@@ -1,5 +1,6 @@
 # API DOCUMENTATION 
 All calls will be to http://localhost:8080/api/<collection name>/…
+  
 All requests will be GET unless otherwise specified
 
 ## Hotels:
@@ -53,3 +54,9 @@ ex(http://localhost:8080/api/reservations/updateReservation/12345678)
 **Note:** Body of the request must be an object of type Reservation, consistent with the object model in mongo
 
 **Note:** If user is not changing cost, must set the cost of the reservation in the body to be a negative number (ex {“cost”:-1})
+
+**Delete a reservation NoteL This must be a DELETE request**
+```
+http://localhost:8080/api/reservations/deleteReservation/{reservationNumber}
+ex(http://localhost:8080/api/reservations/deleteReservation/12345678)
+```
