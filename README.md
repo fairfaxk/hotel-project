@@ -3,11 +3,11 @@ All calls will be to http://localhost:8080/api/<collection name>/…
 All requests will be GET unless otherwise specified
 
 ## Hotels:
-Get all hotels:
+**Get all hotels**
 ```
 http://localhost:8080/api/hotels/findAll
 ```
-Get hotel by name match
+**Get hotel by name match**
 ```
 http://localhost:8080/api/hotels/findByName/{name}
 ex(http://localhost:8080/api/hotels/findByName/Hilton)
@@ -44,10 +44,12 @@ ex(http://localhost:8080/api/reservations/findByHotelName/Hilton
 http://localhost:8080/api/reservations/addReservation
 ```
 **Note**: Body of the request must be an object of type Reservation, consistent with the object model in mongo
+
 **Update an existing reservation Note: This must be a PUT request**
 ```
 http://localhost:8080/api/reservations/updateReservation/{reservationNumber}
 ex(http://localhost:8080/api/reservations/updateReservation/12345678)
 ```
 **Note:** Body of the request must be an object of type Reservation, consistent with the object model in mongo
+
 **Note:** If user is not changing cost, must set the cost of the reservation in the body to be a negative number (ex {“cost”:-1})
