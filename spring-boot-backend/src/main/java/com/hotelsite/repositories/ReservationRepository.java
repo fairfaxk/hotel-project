@@ -10,10 +10,10 @@ import com.hotelsite.models.Reservation;
 
 @Repository
 public interface ReservationRepository extends MongoRepository<Reservation, String> {
-	@Query(value="{'cost': {'$lte': ?0}}")
-	public List<Reservation> findByCostLessThan(double num);
-	@Query(value="{'cost': {'$gte': ?0}}")
-	public List<Reservation> findByCostGreaterThan(double num);
+	@Query(value="{hotelName:?0, 'cost': {'$lte': ?1}}")
+	public List<Reservation> findByHotelNameCostLessThan(String hotelName, double num);
+	@Query(value="{hotelName:?0,'cost': {'$gte': ?0}}")
+	public List<Reservation> findByHotelNameCostGreaterThan(String hotelname, double num);
 	public Reservation findByReservationNumber(String resNum);
 	public List<Reservation> findByHotelName(String hotelName);
 	public void deleteByReservationNumber(String reservationNumber);

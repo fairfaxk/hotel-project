@@ -22,13 +22,13 @@ http://localhost:8080/api/reservations/findAll
 ```
 **Get reservations with cost less than x**
 ```
-http://localhost:8080/api/reservations/findByCostLessThan/{less}
-ex(http://localhost:8080/api/reservations/findByCostLessThan/1000)
+http://localhost:8080/api/reservations/findByCostLessThan/{hotel}/{less}
+ex(http://localhost:8080/api/reservations/findByCostLessThan/Hilton/1000)
 ```
 **Get reservations with cost greater than x**
 ```
-http://localhost:8080/api/reservations/findByCostGreaterThan/{greater}
-ex(http://localhost:8080/api/reservations/findByCostGreaterThan/1000)
+http://localhost:8080/api/reservations/findByCostGreaterThan/{hotel}/{greater}
+ex(http://localhost:8080/api/reservations/findByCostGreaterThan/Hilton/1000)
 ```
 **Get reservation by reservation number**
 ```
