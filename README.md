@@ -84,7 +84,7 @@ http://localhost:8080/api/rooms/findByHotelName/{hotelName}
 
 **Find rooms in a given hotel whose nightly cost is less than or equal to the input cost**
 ```
-http://localhost:8080/api/rooms/findByHotelName/findByRateLessThan/{hotelName}/{rate}
+http://localhost:8080/api/rooms/findByRateLessThan/{hotelName}/{rate}
 ```
 
 **Find rooms in a given hotel whose nightly cost is greater than or equal to the input cost**
