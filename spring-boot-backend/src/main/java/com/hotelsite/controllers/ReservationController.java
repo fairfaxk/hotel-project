@@ -48,9 +48,9 @@ public class ReservationController {
 	 * @param num
 	 * @return json of all rooms whose cost is < num
 	 */
-	@GetMapping("/findByCostLessThan/{less}")
-	public List<Reservation> findCostLessThan(@PathVariable("less") double num){
-		return resRepo.findByCostLessThan(num);
+	@GetMapping("/findByCostLessThan/{hotel}/{less}")
+	public List<Reservation> findCostLessThan(@PathVariable("hotel") String hotel, @PathVariable("less") double num){
+		return resRepo.findByHotelNameCostLessThan(hotel, num);
 	}
 	
 	/**
@@ -59,9 +59,9 @@ public class ReservationController {
 	 * @param num
 	 * @return json of all rooms whose cost is > num
 	 */
-	@GetMapping("/findByCostGreaterThan/{greater}")
-	public List<Reservation> findCostGreaterThan(@PathVariable("greater") double num){
-		return resRepo.findByCostGreaterThan(num);
+	@GetMapping("/findByCostGreaterThan/{hotel}/{greater}")
+	public List<Reservation> findCostGreaterThan(@PathVariable("hotel") String hotel, @PathVariable("greater") double num){
+		return resRepo.findByHotelNameCostGreaterThan(hotel, num);
 	}
 	
 	/**
