@@ -1,0 +1,28 @@
+<main>
+  <Hotel></Hotel>
+</main>
+
+<div class='flex-container'>
+<h2>Hotel Listings</h2>
+<h5>Welcome to our site! Please start by choosing a hotel to begin your reservation</h5>
+
+<!--  Need to repeat for each hotel in hotels list - call correct method-->
+<div ng-repeat="hotel in hotels">
+<div>
+   <div>
+      <img ng-src="{{ hotel.getFile() }}"
+   </div>
+   <div class='list'>
+      <h3>Hotel {{ hotel.getName() }</h3>
+      <div>
+          <div >Hotel: {{ hotel.getId() }}</div>
+          <div >Address: {{ hotel.getAddress() }}</div>
+          <div>Rating: {{ hotel.getRating() }} /5.0</div>
+          <!--link will go to hotel_to_room.html-->
+          <div><a href='#'>Search Rooms</a></div>
+      </div>
+   </div>
+</div>
+<hr>
+</div>
+</div>

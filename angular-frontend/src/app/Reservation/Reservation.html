@@ -1,0 +1,34 @@
+<main>
+  <Reservation></Reservation>
+</main>
+
+
+<div class='flex-container'>
+<h2>Room Listings</h2>
+<h5>Please choose to either book or exit this page</h5>
+
+<div>
+   <div>
+
+      <a href="#">
+        <!--get particular room's picture-->
+      <img ng-src="{{ room.getFile() }}"></img>
+      </a>
+   </div>
+   <div class='list'>
+      <h3>Reservation {{ reservation.getReservationNumber() }</h3>
+      <div>
+          <div >Hotel: {{ reservation.getHotelName() }}</div>
+          <div >Room: {{ reservation.getRoomNumber() }}</div>
+          <div>Cost: {{ reservation.getCost() | currency }} </div>
+          <div>Dates: {{ reservation.getDateFrom() | date }} - {{ reservation.getDateTo() | date }}</div>
+          <div>Paid: {{ reservation.getPaid() }} </div>
+          <!--link to booking or exit page-->
+          <div><a href="#">Book</a></div>
+          <div><a href="#">Exit</a></div>
+      </div>
+   </div>
+</div>
+
+
+</div>

@@ -1,18 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { FormsModule }   from '@angular/forms';
+import { HttpModule }    from '@angular/http';
 
-import { AppComponent } from './app.component';
+import { Room } from './app/Room/Room';
+import { Reservation } from './app/Reservation/Reservation';
+import { Hotel } from './app/Hotel/Hotel';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    Room,
+    Reservation,
+    Hotel,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [Room, Reservation, Hotel]
 })
 export class AppModule { }

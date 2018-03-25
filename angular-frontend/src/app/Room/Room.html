@@ -1,0 +1,38 @@
+<main>
+  <Room></Room>
+</main>
+
+<div class='flex-container'>
+<h2>Room Listings</h2>
+<h5>Please choose an available by selecting a date range to filter by</h5>
+
+<div>filtering! set start date and length of stay (days)</div>
+
+<!--  Need to repeat for each room in rooms list for each date available-->
+<div ng-repeat="room in rooms">
+<div ng-repeat="dateblock in dateblocks">
+<div>
+   <div>
+     <!--add link to rooms filter page for particular hotel-->
+     <!--also need to figure out booked dates-->
+      <a href="#">
+      <img ng-src="{{ room.getFile() }}"></img>
+      </a>
+   </div>
+   <div class='list'>
+      <h3>Room{{ hotel.getRoomNumber() }</h3>
+      <div>
+          <div >ID: {{ hotel.getId() }}</div>
+          <div >Hotel: {{ hotel.getHotelName() }}</div>
+          <div >Room Type: {{ hotel.getRoomType() }}</div>
+          <div>Price: {{ hotel.getPrice() | currency }} </div>
+          <!--link will go to room_to_reservation.html-->
+          <div><a href="#">Book Room</a></div>
+      </div>
+   </div>
+</div>
+<hr>
+</div>
+</div>
+
+</div>
