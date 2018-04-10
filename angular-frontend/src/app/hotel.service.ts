@@ -16,7 +16,6 @@ const httpOptions = {
 @Injectable()
 export class HotelService {
 
- 
     private baseUrl = 'http://localhost:8080';
 
     constructor(private http: Http) { }

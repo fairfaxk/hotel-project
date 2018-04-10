@@ -32,11 +32,9 @@ import { HotelService }          from './hotel.service';
   ],
   declarations: [
     AppComponent,
-    DashboardComponent,
     HeroesComponent,
     HeroDetailComponent,
     RoomsComponent,
-  
     HotelsComponent,
     ReservationDetailComponent,
 

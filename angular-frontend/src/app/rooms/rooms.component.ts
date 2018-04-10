@@ -16,13 +16,33 @@ export class RoomsComponent implements OnInit {
   constructor(private roomService: RoomService) { }
  
   ngOnInit() {
-    this.getRooms();
+      //need to get inputs in here
+    this.findOpenRoomsByType();
   }
  
-  getHeroes(): void {
-    this.roomService.getHeroes()
-    .subscribe(rooms => this.rooms = rooms);
+  findOpenRoomsByType(roomType: string, dateFrom: Date, dateTo: Date, hotelName: string): void {
+      this.roomService.findOpenRoomsByType(roomType, dateFrom, dateTo, hotelName)
+
   }
- 
- 
+  findByHotelNameAndRoomNumber(hotelName: string, roomNumber: string): void {
+      this.roomService.findByHotelNameAndRoomNumber(hotelName, roomNumber)
+
+  }
+  findByHotelName(hotelName: string): void {
+      this.roomService.findByHotelName(hotelName)
+      
+  }
+  findByHotelNameAndPriceLessThan(hotelName: string, num:number): void {
+      this.roomService.findByHotelNameAndPriceLessThan(hotelName, num)
+
+  }
+  findByHotelNameAndPriceGreaterThan(hotelName: string, num:number): void {
+      this.roomService.findByHotelNameAndPriceGreaterThan(hotelName, num)
+
+     
+  }
+  findByHotelNameAndType(hotelName: string, type: string): void {
+      this.roomService.findByHotelNameAndType(hotelName, type)
+  }
+
 }
