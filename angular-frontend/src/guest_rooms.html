@@ -1,0 +1,51 @@
+ <main>
+  <Room></Room>
+</main>
+
+<!doctype html>
+<html lang="en">
+<body>	
+
+<div class='flex-container'>
+<h2>Room Selection</h2>
+<h5>View available rooms, then input desired room number</h5>
+   
+   <div class='list'>
+      	<form action="./guest_reservation.html" method="GET">
+  			Room Number:<br>
+  			<input type="text" name="roomchoice" value="">
+  			<br>
+  			<br>
+ 	 		<input type="submit" value="Submit" >
+		</form>
+   </div>
+
+<!--  Need to repeat for each hotel in hotels list - call correct methods-->
+<div> ng-repeat="Room in findOpenRoomByType({<span id="twoi"></span>}{<span id="threei"></span>}/{<span id="zeroi"></span>}/{<span id="onei"></span>})"
+<h3>View List of Hotels</h3>
+<div>
+   <div>
+        <img ng-src="./img/" + {{ Room.getFile() }}></img>
+   </div>
+   <div class='list'>
+      <h3>Room {{ Room.getRoomNumber() }</h3>
+      <div>
+          <div >ID: {{ Room.getId() }}</div>
+          <div >Hotel: {{ Room.getHotelName() }}</div>
+          <div >Room Type: {{ Room.getRoomType() }}</div>
+          <div>Price: {{ Room.getPrice() | currency }} </div>
+      </div>
+   </div>
+</div>
+<hr>
+</div>
+</div>
+</body>
+<script>
+		y = (window.location.search).split("/")
+		document.getElementById("zeroi").innerHTML=y[0]
+		document.getElementById("onei").innerHTML=y[1]
+		document.getElementById("twoi").innerHTML=y[2]
+		document.getElementById("threei").innerHTML=y[3]
+	</script>
+</html>

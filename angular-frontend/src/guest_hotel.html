@@ -1,0 +1,52 @@
+<main>
+  <HotelController></HotelController>
+</main>
+
+  <!doctype html>
+<html lang="en">
+<body>
+
+<div class='flex-container'>
+<h2>Hotel Selection</h2>
+<h5>Input a date range and room type for your stay, and select a hotel</h5>
+   
+   <div class='list'>
+      	<form action="./guest_rooms.html" method="GET">
+  			Start Date:<br>
+  			<input type="date" name="startdate" value="">
+  			<br>
+  			End Date:<br>
+  			<input type="date" name="enddate" value="">
+  			<br>
+  			Chosen Hotel Number:<br>
+  			<input type="text" name="hotelchoice" value="">
+  			<br>
+  			Room Type:<br>
+  			<input type="text" name="roomtype" value="">
+  			<br><br>
+ 	 		<input type="submit" value="Submit" onclick="window.location.href='/guest_rooms'">
+		</form>
+   </div>
+
+
+<!--  Need to repeat for each hotel in hotels list - call correct method-->
+<div ng-repeat="Hotel in findAllHotels()">
+<h3>View List of Hotels</h3>
+<div>
+   <div>
+      <img ng-src="./img/{{ hotel.getFile() }}"></img>
+   </div>
+   <div class='list'>
+      <h3>Hotel {{ hotel.getName() }}</h3>
+      <div>
+          <div >Hotel: {{ hotel.getId() }}</div>
+          <div >Address: {{ hotel.getAddress() }}</div>
+          <div>Rating: {{ hotel.getRating() }} /5.0</div>
+      </div>
+   </div>
+</div>
+<hr>
+</div>
+</div>
+</body>
+</html>

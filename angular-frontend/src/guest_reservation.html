@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<body>
+
+
+<div class='flex-container'>
+<h2>Room Listings</h2>
+<h5>Please choose to either book or exit this page</h5>
+
+<div>
+   <div>
+      <img ng-src="./img/"+{{ room.getFile() }}></img>
+   </div>
+   <div class='list'>
+      <h3>Reservation {{ Reservation.getReservationNumber(<span id="zeroi"></span>) }</h3>
+      <div>
+          <div >Hotel: {{ Reservation.getHotelName() }}</div>
+          <div >Room: {{ Reservation.getRoomNumber() }}</div>
+          <div>Cost: {{ Reservation.getCost() | currency }} </div>
+          <div>Dates: {{ Reservation.getDateFrom() | date }} - {{ reservation.getDateTo() | date }}</div>
+          <div>Paid: {{ Reservation.getPaid() }} </div>
+          <div><a href="./index.html"><input type="button" value="Book" (click)="addReservation({{ new Reservation(<span id="zeroi"></span>) }})"></a></div>
+          <!-- for line below, need to cancel booking made -->
+          <div><a href="./index.html"><input type="button" value="Exit"> </a></div>
+      </div>
+   </div>
+</div>
+
+
+</div>
+
+</body>
+<script>
+		document.getElementById("zeroi").innerHTML=(window.location.search)
+		</script>
+</html>
