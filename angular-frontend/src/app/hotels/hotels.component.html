@@ -1,0 +1,35 @@
+<h2>My Hotels</h2>
+ 
+ <div>
+  <label>Date From
+    <input #dateFrpm />
+  </label>
+  <label>Date To
+    <input #dateTo />
+  </label>
+  <label>Hotel Name
+    <input #hotelName />
+  </label>
+  <label>Room Type
+    <input #roomtype />
+  </label>
+  <!-- (click) passes input value to findOpenRoomByType() and then clears the input -->
+  <button (click)="findOpenRoomByType(roomType.value, dateFrom.value, dateTo.value, hotelName.value)">
+    <a routerLink="/rooms">Submit for Rooms</a>
+  </button>
+</div>
+ 
+ 
+ 
+<ul class="heroes">
+  <li *ngFor="let hotel of hotels">
+    <a routerLink="/rooms/findByHotelName/{{hotel.name}}">
+      <span class="badge">{{hotel.id}}</span> {{hotel.name}} <span class="badge">{{hotel.address}}</span><span class="badge">{{hotel.rating}}</span>
+    </a>
+
+  </li>
+</ul>
+
+
+
+

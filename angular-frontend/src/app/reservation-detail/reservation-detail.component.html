@@ -1,0 +1,10 @@
+<div *ngIf="reservation">
+  <h2> Reservation {{ reservation.reservationNumber }}</h2>
+  <div><span>Room Number: </span>{{reservation.roomNumber}}</div>
+  <div><span>Date From: </span>{{reservation.dateFrom}}</div>
+	<div><span>Date To: </span>{{reservation.dateTo}}</div>
+	<div><span>Paid: </span>{{reservation.paid}}</div>
+	<div><span>Hotel Name: </span>{{reservation.hotelName}}</div>
+	<div><span>Cost: </span>{{reservation.cost | currency}}</div>
+</div>
+
