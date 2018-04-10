@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
  
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
 import { Hotel } from '../hotel';
 import { HotelService } from '../hotel.service';
 import { Room } from '../room';

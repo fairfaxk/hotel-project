@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
  
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
 import { Room } from '../room';
 import { RoomService } from '../room.service';
 import { ActivatedRoute } from '@angular/router';

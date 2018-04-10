@@ -2,16 +2,10 @@ import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
- 
-
- 
 import { AppRoutingModule }     from './app-routing.module';
- 
 import { AppComponent }         from './app.component';
-import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
-import { HeroesComponent }      from './heroes/heroes.component';
-import { HeroService }          from './hero.service';
 
+import {HttpModule} from '@angular/http';
 import { RoomsComponent }      from './rooms/rooms.component';
 import { RoomService }          from './room.service';
 
@@ -28,18 +22,16 @@ import { HotelService }          from './hotel.service';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
- 
+    HttpModule
   ],
   declarations: [
     AppComponent,
-    HeroesComponent,
-    HeroDetailComponent,
     RoomsComponent,
     HotelsComponent,
     ReservationDetailComponent,
 
   ],
-  providers: [ HeroService, RoomService,HotelService,ReservationService],
+  providers: [ RoomService,HotelService,ReservationService,HttpClientModule],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
