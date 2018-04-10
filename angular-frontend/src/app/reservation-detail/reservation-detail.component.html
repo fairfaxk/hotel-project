@@ -8,3 +8,6 @@
 	<div><span>Cost: </span>{{reservation.cost | currency}}</div>
 </div>
 
+<!-- confirm, create reservation (addReservation), then link to home page -->
+<button (click)="addReservation()">Confirm Reservation</button>
+<button><a routerLink="/hotels">Exit</a></button>

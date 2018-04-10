@@ -14,7 +14,11 @@ import { RoomService } from '../room.service';
 })
 export class HotelsComponent implements OnInit {
   hotels: Hotel[];
-  roomService: RoomService
+  roomService: RoomService;
+  roomType: string;
+  dateFrom: Date;
+  dateTo: Date;
+  hotelName: string;
  
   constructor(private hotelService: HotelService) { }
  
@@ -27,14 +31,9 @@ export class HotelsComponent implements OnInit {
   }
   
   findByHotelName(hotelName: string): void {
-      
       this.hotelService.findByHotelName(hotelName)
   }
-  
-  //need to get info from user input to load rooms page  ---> then send info to ngonintion rooms.component
-  
-  findOpenRoomByType(roomType: string, dateFrom: Date, dateTo: Date, hotelName: string)): void {
-      this.roomService.findOpenRoomByType(roomType, dateFrom, dateTo, hotelName)
-    }
+
+
  
 }

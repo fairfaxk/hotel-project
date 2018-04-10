@@ -3,9 +3,10 @@
 <ul class="heros">
   <li *ngFor="let room of rooms">
   <!-- here is where to add new reservation, but need to do it based on hotel, room, and dates -->
-    <a routerLink="/reservation-detail/{addReservation().id}">
+    <a routerLink="/reservation-detail/{room.dateFrom}{room.dateTo}{room.hotelName}{room.roomNumber}{room.price}">
       <span class="badge">{{room.id}}</span> {{room.roomNumber}}<span class="badge">{{room.hotelName}}</span>
       <span class="badge">{{room.roomType}}</span><span class="badge">{{room.price | currency}}</span>
     </a>
   </li>
 </ul>
+

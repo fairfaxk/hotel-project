@@ -10,8 +10,8 @@ import { HotelsComponent }      from './hotels/hotels.component';
 const routes: Routes = [
   { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'heroes', component: HeroesComponent },
-  { path: 'hotels/:hotelName', component: HotelsComponent },
-  { path: 'rooms/:roomType,dateFrom,dateTo,hotelName', component: RoomsComponent },
+  { path: 'hotels', component: HotelsComponent },
+  { path: 'rooms/: roomType,dateFrom,dateTo,hotelName', component: RoomsComponent },
   { path: 'reservations/:reservationNumber', component: ReservationDetailComponent },
 ];
  
