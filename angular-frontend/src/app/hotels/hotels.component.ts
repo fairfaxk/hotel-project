@@ -25,7 +25,7 @@ export class HotelsComponent implements OnInit {
   }
  
   findAll(): void {
-    this.hotelService.findAll();
+    this.hotelService.findAll().then(hotels => this.hotels=hotels)
   }
   
   findByHotelName(hotelName: string): void {

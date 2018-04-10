@@ -1,5 +1,5 @@
 export class Reservation {
-    reservationNumber: number;
+    reservationNumber: string;
     dateFrom: Date;
     dateTo: Date;
     paid: boolean;

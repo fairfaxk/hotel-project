@@ -20,7 +20,7 @@ export class ReservationDetailComponent implements OnInit {
   paid: boolean;
   roomNumber:string;
   cost:number
-  reservationNumber: number;
+  reservationNumber: string;
   reservation: Reservation;
   private sub:any;
  
@@ -29,10 +29,6 @@ export class ReservationDetailComponent implements OnInit {
     private reservationService: ReservationService,
     private location: Location
   ) {}
-  
-  randomInt(min, max){
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-   }
  
   ngOnInit(): void {
       this.reservation = new Reservation()
@@ -45,7 +41,8 @@ export class ReservationDetailComponent implements OnInit {
           this.roomNumber = params['roomNumber'];
           this.cost = +params['cost'];})
       this.paid=false;
-      this.reservationNumber = Math.floor(Math.random() * (99999999 - 0 + 1)) + 0;
+      this.reservationNumber = String(Math.floor(Math.random() * (99999999 - 0 + 1)) + 0);
+      this.reservation.reservationNumber = String(this.reservationNumber);
       this.reservation.dateFrom = this.dateFrom;
       this.reservation.dateTo = this.dateTo;
       this.reservation.paid = this.paid;
