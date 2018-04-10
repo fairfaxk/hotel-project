@@ -21,13 +21,13 @@ export class HotelService {
     constructor(private http: Http) { }
     
     findAll(): Promise<Hotel[]> {
-        return this.http.get(this.baseUrl + '/api/reservations/findAll/')
+        return this.http.get(this.baseUrl + '/api/hotels/findAll/')
           .toPromise()
           .then(response => response.json() as Hotel[])
     }
     
     findByHotelName(hotelName: string): Promise<Hotel> {
-        return this.http.get(this.baseUrl + '/api/reservations/findByHotelName/',hotelName)
+        return this.http.get(this.baseUrl + '/api/hotels/findByHotelName/',hotelName)
           .toPromise()
           .then(response => response.json() as Hotel)
     }
