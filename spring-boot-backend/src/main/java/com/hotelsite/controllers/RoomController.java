@@ -1,5 +1,7 @@
 package com.hotelsite.controllers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 /*import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;*/
@@ -43,11 +45,15 @@ public class RoomController {
 	 * @param dateFrom
 	 * @param dateTo
 	 * @return
+	 * @throws ParseException 
 	 */
-	@GetMapping("/findOpenRoomByType/{hotelName}{roomType}/{dateFrom}/{dateTo}")
-	public List<Room> findOpenRooms(@PathVariable("hotelName") String hotelName, @PathVariable("roomType") String roomType, @PathVariable("dateFrom") Date dateFrom, @PathVariable("dateTo") Date dateTo)
+	@GetMapping("/findOpenRoomByType/{hotelName}/{roomType}/{dateFrom}/{dateTo}")
+	public List<Room> findOpenRooms(@PathVariable("hotelName") String hotelName, @PathVariable("roomType") String roomType, @PathVariable("dateFrom") String dateFrom, @PathVariable("dateTo") String dateTo) throws ParseException
 	{
-		return roomRepo.findOpenRoomsByType(roomType, dateFrom, dateTo, hotelName);
+	    SimpleDateFormat inputFormat= new SimpleDateFormat("yyyy-MM-dd");
+		Date dateFrom2 = inputFormat.parse(dateFrom);
+		Date dateTo2 = inputFormat.parse(dateTo);
+		return roomRepo.findOpenRoomsByType(roomType, dateFrom2, dateTo2, hotelName);
 	}
 	
 	/**

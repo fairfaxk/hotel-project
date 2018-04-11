@@ -2,23 +2,21 @@
 
  <div>
   <label>Date From
-    <input type="date" ng-value="dateFrom" />
+    <input [(ngModel)]="dateFrom" type="date"/>
   </label>
   <label>Date To
-    <input type="date" ng-value="dateTo" />
+    <input [(ngModel)]="dateTo" type="date"/>
   </label>
   <label>Hotel Name
-    <input ng-value="hotelName" />
+    <input [(ngModel)]="hotelName"/>
   </label>
   <label>Room Type
-    <input ng-value="roomType" />
+    <input [(ngModel)]="roomType"/>
   </label>
   <button>
-    <a routerLink="/rooms/{roomType}{dateFrom}{dateTo}{hotelName}">Submit for Rooms</a>
+    <a [routerLink]="['/rooms', roomType, dateFrom, dateTo, hotelName]">Submit for Rooms</a>
   </button>
 </div>
-
-
 
 <ul class="heroes">
   <li *ngFor="let hotel of hotels" style="text:center;width:500px">

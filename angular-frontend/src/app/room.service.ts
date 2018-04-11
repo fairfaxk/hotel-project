@@ -1,26 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
- 
+
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
- 
-import { Room } from './room';
 import { Headers, Http } from '@angular/http';
- 
+
+import { Room } from './room';
+
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
- 
+
 @Injectable()
 export class RoomService {
- 
+
     private baseUrl = 'http://localhost:8080';
 
     constructor(private http: Http) { }
-    
+
+    findAll(): Promise<Room[]> {
+        return this.http.get(this.baseUrl + '/api/rooms/findAll/')
+          .toPromise()
+          .then(response => response.json() as Room[])
+    }
+
     findOpenRoomsByType(roomType: string, dateFrom: Date, dateTo: Date, hotelName: string): Promise<Room[]> {
-        return this.http.get(this.baseUrl + '/api/rooms/findOpenRoomsByType/',roomType+dateFrom+dateTo+hotelName)
+        return this.http.get(this.baseUrl + '/api/rooms/findOpenRoomByType/' + hotelName + '/' + roomType + '/' + dateFrom + '/' + dateTo )
           .toPromise()
           .then(response => response.json() as Room[])
 
@@ -29,7 +36,7 @@ export class RoomService {
         return this.http.get(this.baseUrl + '/api/rooms/findByHotelNameAndRoomNumber/',hotelName+roomNumber)
           .toPromise()
           .then(response => response.json() as Room[])
- 
+
     }
     findByHotelName(hotelName: string): Promise<Room[]> {
         return this.http.get(this.baseUrl + '/api/rooms/findByHotelName/',hotelName)
@@ -47,7 +54,7 @@ export class RoomService {
         return this.http.get(this.baseUrl + '/api/rooms/findByHotelNameAndPriceGreaterThan/',hotelName+num)
           .toPromise()
           .then(response => response.json() as Room[])
-       
+
     }
     findByHotelNameAndType(hotelName: string, type: string): Promise<Room[]> {
         return this.http.get(this.baseUrl + '/api/rooms/findByHotelNameAndType/',hotelName+type)
