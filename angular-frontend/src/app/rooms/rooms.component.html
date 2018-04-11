@@ -1,13 +1,18 @@
 <h2>My Available Rooms</h2>
- 
+
 <ul class="heros">
-  <li *ngFor="let room of rooms">
+  <li *ngFor="let room of rooms" style="text:center;width:500px">
   <!-- here is where to add new reservation, but need to do it based on hotel, room, and dates -->
-    <a routerLink="/reservation-detail/{room.dateFrom}{room.dateTo}{room.hotelName}{room.roomNumber}{room.price}">
-      <span class="badge">#    {{room.id}}</span><span>Room:     {{room.roomNumber}}</span>
-      <span>Hotel:    {{room.hotelName}}</span><span>Type:     {{room.roomType}}</span>
-      <span>Price:      {{room.price | currency}}</span>
-    </a>
+    <!--<a routerLink="/reservation-detail/{room.dateFrom}{room.dateTo}{room.hotelName}{room.roomNumber}{room.price}">-->
+      <h4>Room:     {{room.roomNumber}}</h4>
+      <p>Hotel:    {{room.hotelName}}</p>
+      <p>Type:     {{room.roomType}}</p>
+      <p>Price:      {{room.price | currency}}</p>
+
+        <a [routerLink]="['/reservation-detail', dateFrom, dateTo, hotelName, room.roomNumber, room.price]">
+          <button style="text:left;width:200px;background-color:#4682B4;color:black">
+            Reserve {{room.hotelName}}:{{room.roomNumber}}
+          </button>
+        </a>
   </li>
 </ul>
-

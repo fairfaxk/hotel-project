@@ -2,20 +2,14 @@
 
  <div>
   <label>Date From
-    <input [(ngModel)]="dateFrom" type="date"/>
+    <input [(ngModel)]="dateFrom" type="date" ng-required="true"/>
   </label>
   <label>Date To
-    <input [(ngModel)]="dateTo" type="date"/>
-  </label>
-  <label>Hotel Name
-    <input [(ngModel)]="hotelName"/>
+    <input [(ngModel)]="dateTo" type="date" ng-required="true"/>
   </label>
   <label>Room Type
-    <input [(ngModel)]="roomType"/>
+    <input [(ngModel)]="roomType" ng-required="true"/>
   </label>
-  <button>
-    <a [routerLink]="['/rooms', roomType, dateFrom, dateTo, hotelName]">Submit for Rooms</a>
-  </button>
 </div>
 
 <ul class="heroes">
@@ -23,5 +17,10 @@
       <h4>Hotel: {{hotel.name}}</h4>
       <p>Address: {{hotel.address}}</p>
       <p>Rating: {{hotel.rating}}</p>
+        <a [routerLink]="['/rooms', roomType, dateFrom, dateTo, hotel.name]">
+          <button style="text:left;width:100px;background-color:#4682B4;color:black">
+            Submit for {{hotel.name}}
+          </button>
+        </a>
   </li>
 </ul>
