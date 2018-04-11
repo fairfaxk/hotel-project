@@ -81,7 +81,7 @@ public class ReservationController {
 	 * @param num
 	 * @return json reservations with input hotel name
 	 */
-	@GetMapping("/findByHotelName/{HotelName}")
+	@GetMapping("/findByHotelName/{hotelName}")
 	public List<Reservation> findByHotelName(@PathVariable("hotelName") String hotelName){
 		return resRepo.findByHotelName(hotelName);
 	}
@@ -146,6 +146,7 @@ public class ReservationController {
 		}
 		room.setBookedDates(bookings);
 		roomRepo.save(room);
+		resRepo.deleteByReservationNumber(reservationNumber);
 		return resRepo.save(newReservation);
 	}
 	
@@ -158,6 +159,20 @@ public class ReservationController {
 	@DeleteMapping("deleteReservation/{reservationNumber}")
 	public void deleteReservation(@PathVariable("reservationNumber") String reservationNumber)
 	{
+		Reservation reservation = resRepo.findByReservationNumber(reservationNumber);
+		
+		//update the booking in the room repository
+		Room room = roomRepo.findByHotelNameAndRoomNumber(reservation.getHotelName(), reservation.getRoomNumber());
+		List<Booking> bookings= new ArrayList<Booking>();
+		for(Booking book: room.getBookedDates())
+		{
+			if(!book.getReservationNumber().equals(reservation.getReservationNumber()))
+			{
+				bookings.add(book);
+			}
+		}
+		room.setBookedDates(bookings);
+		roomRepo.save(room);
 		resRepo.deleteByReservationNumber(reservationNumber);
 	}
 }
