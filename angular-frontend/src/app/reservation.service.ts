@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
- 
+
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
- 
+
 import { Reservation } from './reservation';
 import { Headers, Http } from '@angular/http';
- 
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
- 
+
 @Injectable()
 export class ReservationService {
- 
+
     private baseUrl = 'http://localhost:8080';
 
     constructor(private http: Http) { }
@@ -35,7 +35,7 @@ export class ReservationService {
           return this.http.get(this.baseUrl + '/api/reservations/findByReservationNumber/',resNum)
             .toPromise()
             .then(response => response.json() as Reservation)
-            
+
       }
       findByHotelName(hotelName: string): Promise<Reservation[]> {
           return this.http.get(this.baseUrl + '/api/reservations/findByHotelName/',hotelName)
@@ -50,7 +50,7 @@ export class ReservationService {
 
       }
       addReservation(reservation: Reservation): Promise<Reservation> {
-        return this.http.put(this.baseUrl + '/api/reservations/addReservation/',reservation)
+        return this.http.post(this.baseUrl + '/api/reservations/addReservation/',reservation)
           .toPromise()
           .then(response => response.json() as Reservation)
 
