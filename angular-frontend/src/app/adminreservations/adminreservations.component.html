@@ -1,0 +1,18 @@
+<h2>Current Bookings</h2>
+ 
+<ul class="heros">
+  <li *ngFor="let reservation of reservations" style="text:center;width:500px">
+      <h4>Reservation Number: {{reservation.reservationNumber}}</h4> 
+      <p>Hotel Name: {{reservation.hotelName}}</p>
+      <p>Room Number: {{reservation.roomNumber}}</p>
+      <p>Paid: {{reservation.paid}}</p>
+      <p>Cost: {{reservation.cost | currency}}</p>
+      <p>Date From: {{reservation.dateFrom | date}}</p>
+      <p>Date To: {{reservation.dateTo | date}}</p>
+     <a [routerLink]="['/booking-detail', reservation.reservationNumber]">
+          <button style="text:left;width:200px;background-color:#4682B4;color:black">
+            View {{reservation.reservationNumber}}
+          </button>
+        </a>
+  </li>
+</ul>
