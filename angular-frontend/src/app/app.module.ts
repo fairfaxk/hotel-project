@@ -15,6 +15,8 @@ import { ReservationService }          from './reservation.service';
 
 import { HotelsComponent }      from './hotels/hotels.component';
 import { HotelService }          from './hotel.service';
+import { AdminreservationsComponent } from './adminreservations/adminreservations.component';
+import { BookingDetailComponent } from './booking-detail/booking-detail.component';
  
 @NgModule({
   imports: [
@@ -29,6 +31,8 @@ import { HotelService }          from './hotel.service';
     RoomsComponent,
     HotelsComponent,
     ReservationDetailComponent,
+    AdminreservationsComponent,
+    BookingDetailComponent,
 
   ],
   providers: [ RoomService,HotelService,ReservationService,HttpClientModule],

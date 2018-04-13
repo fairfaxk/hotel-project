@@ -1,13 +1,13 @@
 <div *ngIf="reservation">
   <h2> Reservation {{ reservation.reservationNumber }}</h2>
   <div><span>Room Number: </span>{{reservation.roomNumber}}</div>
-  <div><span>Date From: </span>{{reservation.dateFrom}}</div>
-	<div><span>Date To: </span>{{reservation.dateTo}}</div>
+  <div><span>Date From: </span>{{reservation.dateFrom | date}}</div>
+	<div><span>Date To: </span>{{reservation.dateTo | date}}</div>
 	<div><span>Paid: </span>{{reservation.paid}}</div>
 	<div><span>Hotel Name: </span>{{reservation.hotelName}}</div>
 	<div><span>Cost: </span>{{reservation.cost | currency}}</div>
-</div>
 
-<!-- confirm, create reservation (addReservation), then link to home page -->
-<button (click)="addReservation()" style="text:left;width:200px;background-color:#4682B4;color:black">Confirm Reservation</button>
+
+<button (click)="addReservation(reservation)" style="text:left;width:200px;background-color:#4682B4;color:black">Confirm Reservation</button>
 <button style="text:left;width:200px;background-color:#4682B4;color:black"><a routerLink="/hotels">Exit</a></button>
+</div>

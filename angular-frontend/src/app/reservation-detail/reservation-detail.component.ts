@@ -1,17 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-
 import { Reservation }         from '../reservation';
 import { ReservationService }  from '../reservation.service';
-
 
 @Component({
   selector: 'app-reservation-detail',
   templateUrl: './reservation-detail.component.html',
   styleUrls: [ './reservation-detail.component.css' ]
 })
-
 
 export class ReservationDetailComponent implements OnInit {
   dateFrom: Date;
@@ -32,8 +29,6 @@ export class ReservationDetailComponent implements OnInit {
 
   ngOnInit(): void {
       this.reservation = new Reservation()
-      //link inputs --this.link inputs
-      //set all reservation characteristics
       this.sub = this.route.params.subscribe(params => {
           this.dateFrom = params['dateFrom'];
           this.dateTo = params['dateTo'];
@@ -52,9 +47,9 @@ export class ReservationDetailComponent implements OnInit {
   }
 
   //add reservation method
-  addReservation(): void {
-      this.reservationService.addReservation(this.reservation)
-  }
+  addReservation(reservation: Reservation): void {
+         this.reservationService.addReservation(reservation) //.then(reservation=> this.reservation=reservation)
+     }
 
 
 

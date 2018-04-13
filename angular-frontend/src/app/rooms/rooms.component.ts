@@ -20,7 +20,6 @@ export class RoomsComponent implements OnInit {
   constructor(private roomService: RoomService, private route:ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this);
     this.route.params.subscribe(params => {
           this.roomType = params['roomType'];
           this.dateFrom = params['dateFrom'];

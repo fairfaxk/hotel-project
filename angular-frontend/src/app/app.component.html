@@ -1,10 +1,18 @@
 <h1>{{title}}</h1>
 <nav>
 
-<button><a routerLink="/hotels">Guest View for Hotels</a></button>
+<button style="text:left;width:100px;background-color:#4682B4;color:black"><a routerLink="/hotels">Guest View for Hotels</a></button>
 
-<!--  <button><a routerLink="/reservations">Admin View</a></button> -->
-  
+ <div>
+  <label>Admin Hotel
+    <input [(ngModel)]="hotelName" ng-required="true"/>
+  </label>
+  <a [routerLink]="['/adminreservations',hotelName]">
+      <button style="text:left;width:100px;background-color:#4682B4;color:black">
+       Submit for Admin View
+      </button>
+   </a>
+</div>
 
 </nav>
 <router-outlet></router-outlet>
