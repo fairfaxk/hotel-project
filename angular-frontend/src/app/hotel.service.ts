@@ -27,7 +27,7 @@ export class HotelService {
     }
     
     findByHotelName(hotelName: string): Promise<Hotel> {
-        return this.http.get(this.baseUrl + '/api/hotels/findByHotelName/',hotelName)
+        return this.http.get(this.baseUrl + '/api/hotels/findByHotelName/' +hotelName) 
           .toPromise()
           .then(response => response.json() as Hotel)
     }

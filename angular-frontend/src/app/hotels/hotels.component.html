@@ -1,16 +1,20 @@
 <h2>My Hotels</h2>
-
- <div>
+<form  #loginForm="ngForm" novalidate>
+  <div>
   <label>Date From
-    <input [(ngModel)]="dateFrom" type="date" ng-required="true"/>
+    <input [(ngModel)]="dateFrom" name="dateFrom" type="date" required/>
   </label>
   <label>Date To
-    <input [(ngModel)]="dateTo" type="date" ng-required="true"/>
+    <input [(ngModel)]="dateTo" name="dateTo" type="date" required/>
   </label>
   <label>Room Type
-    <input [(ngModel)]="roomType" ng-required="true"/>
+  	<select [(ngModel)]="roomType" name="roomType" required>
+    	<option value="single">Single</option>
+    	<option value="double">Double</option>
+    	<option value="triple">Triple</option>
+ 	 </select>
   </label>
-</div>
+  </div>
 
 <ul class="heroes">
   <li *ngFor="let hotel of hotels" style="text:center;width:500px">
@@ -18,9 +22,10 @@
       <p>Address: {{hotel.address}}</p>
       <p>Rating: {{hotel.rating}}</p>
         <a [routerLink]="['/rooms', roomType, dateFrom, dateTo, hotel.name]">
-          <button style="text:left;width:100px;background-color:#4682B4;color:black">
+          <button style="text:left;width:100px;background-color:#4682B4;color:black" [disabled]="loginForm.form.invalid">
             Submit for {{hotel.name}}
           </button>
         </a>
   </li>
 </ul>
+</form>

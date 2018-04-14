@@ -3,17 +3,24 @@
 
 <button style="text:left;width:100px;background-color:#4682B4;color:black"><a routerLink="/hotels">Guest View for Hotels</a></button>
 
+
+<form  #loginForm="ngForm" novalidate>
  <div>
   <label>Admin Hotel
-    <input [(ngModel)]="hotelName" ng-required="true"/>
+  	<select [(ngModel)]="hotelName"  name="hotelName" required>
+    	<option value="Taj">Taj</option>
+    	<option value="Marriott">Marriott</option>
+    	<option value="Hilton">Hilton</option>
+    	<option value="Ritz Carlton">Ritz Carlton</option>
+  	</select>
   </label>
   <a [routerLink]="['/adminreservations',hotelName]">
-      <button style="text:left;width:100px;background-color:#4682B4;color:black">
+      <button style="text:left;width:100px;background-color:#4682B4;color:black" [disabled]="loginForm.form.invalid">
        Submit for Admin View
       </button>
    </a>
 </div>
-
+</form>
 </nav>
 <router-outlet></router-outlet>
 

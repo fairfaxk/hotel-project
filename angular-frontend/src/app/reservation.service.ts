@@ -20,31 +20,32 @@ export class ReservationService {
     constructor(private http: Http) { }
 
       findByHotelNameCostLessThan(hotelName: string, num:number): Promise<Reservation[]> {
-          return this.http.get(this.baseUrl + '/api/reservations/findByHotelNameCostLessThan/',hotelName+num)
+          return this.http.get(this.baseUrl + '/api/reservations/findByHotelNameCostLessThan/' + hotelName+num)
             .toPromise()
             .then(response => response.json() as Reservation[])
 
       }
       findByHotelNameCostGreaterThan(hotelName: string, num:number): Promise<Reservation[]> {
-          return this.http.get(this.baseUrl + '/api/reservations/findByHotelNameCostGreaterThan/',hotelName+num)
+          return this.http.get(this.baseUrl + '/api/reservations/findByHotelNameCostGreaterThan/' + hotelName+num)
             .toPromise()
             .then(response => response.json() as Reservation[])
 
       }
       findByReservationNumber(resNum: string): Promise<Reservation> {
-          return this.http.get(this.baseUrl + '/api/reservations/findByReservationNumber/',resNum)
+          return this.http.get(this.baseUrl + '/api/reservations/findByReservationNumber/' + resNum)
             .toPromise()
             .then(response => response.json() as Reservation)
 
       }
+      
       findByHotelName(hotelName: string): Promise<Reservation[]> {
-          return this.http.get(this.baseUrl + '/api/reservations/findByHotelName/',hotelName)
+          return this.http.get(this.baseUrl + '/api/reservations/findByHotelName/' + hotelName)
             .toPromise()
             .then(response => response.json() as Reservation[])
 
       }
       deleteByReservationNumber(reservationNumber: string): Promise<void> {
-        return this.http.delete(this.baseUrl + '/api/reservations/deleteReservation/',reservationNumber)
+        return this.http.delete(this.baseUrl + '/api/reservations/deleteReservation/' + reservationNumber)
           .toPromise()
           .then(response => response.json() as void)
 

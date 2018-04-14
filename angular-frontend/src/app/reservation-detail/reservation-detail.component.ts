@@ -21,6 +21,9 @@ export class ReservationDetailComponent implements OnInit {
   reservation: Reservation;
   private sub:any;
 
+  hide: boolean;
+  days:number;
+
   constructor(
     private route: ActivatedRoute,
     private reservationService: ReservationService,
@@ -44,14 +47,25 @@ export class ReservationDetailComponent implements OnInit {
       this.reservation.hotelName = this.hotelName;
       this.reservation.roomNumber = this.roomNumber;
       this.reservation.cost = this.cost;
+      //default for hide should be true, to hide module, but doesn't recognize it
+      this.hide=true;
+      //.getTime should be able to convert to milliseconds from 1970, which then can be converted to days, but 
+      //angular doesn't think getTime() is a function
+      this.days = (this.dateTo.getTime() - this.dateFrom.getTime())/(24*60*60*1000)
+      console.log(this.days)
   }
 
-  //add reservation method
   addReservation(reservation: Reservation): void {
-         this.reservationService.addReservation(reservation) //.then(reservation=> this.reservation=reservation)
-     }
-
-
-
+      console.log(this.hide)
+      this.reservationService.addReservation(reservation).then(reservation=> this.reservation=reservation)
+      this.hide=false;
+      console.log(this.hide)
+  }
+  
+  //suppose to set hide to false to show module
+  setConfirm(): void {
+      this.hide=false;
+  }
+ 
 
 }

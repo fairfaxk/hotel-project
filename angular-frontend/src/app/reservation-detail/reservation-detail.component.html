@@ -5,9 +5,29 @@
 	<div><span>Date To: </span>{{reservation.dateTo | date}}</div>
 	<div><span>Paid: </span>{{reservation.paid}}</div>
 	<div><span>Hotel Name: </span>{{reservation.hotelName}}</div>
-	<div><span>Cost: </span>{{reservation.cost | currency}}</div>
+	<div><span>Cost: </span>{{reservation.cost * reservation.days | currency}} </div>
 
 
-<button (click)="addReservation(reservation)" style="text:left;width:200px;background-color:#4682B4;color:black">Confirm Reservation</button>
-<button style="text:left;width:200px;background-color:#4682B4;color:black"><a routerLink="/hotels">Exit</a></button>
+<button (click)="addReservation(reservation)" ng-click="setConfirm()" style="text:left;width:200px;background-color:#4682B4;color:black">Confirm Reservation {{ reservation.reservationNumber }}</button>
+<button style="text:left;width:200px;background-color:#4682B4;color:black" ><a routerLink="/hotels">Exit</a></button>
+</div>
+
+
+<!-- the ng-hide should be turned to false on button click, but still won't hide originally
+ (should be hidden for hide=true in controller -->
+<div  ng-hide="hide">
+  <div>
+    <div>
+      <div>
+        <h4>Your Reservation is Confirmed!</h4>
+      </div>
+      <div>
+       <p> Your reservation number is: {{ reservation.reservationNumber }}</p>
+       <p>Please save for your reference</p>
+      </div>
+      <button type="button"><a routerLink="/hotels">Click to Confirm and Exit</a></button>
+      
+    </div>
+
+  </div>
 </div>
