@@ -8,6 +8,6 @@
 	<div><span>Cost: </span>{{reservation.cost}}</div> <!-- * reservation.days | currency}} </div>-->
 
 
-<button (click)="addReservation(reservation)" style="text:left;width:200px;background-color:#4682B4;color:black"><a routerLink="/hotels">Confirm Reservation {{ reservation.reservationNumber }}</a></button>
-<button style="text:left;width:200px;background-color:#4682B4;color:black" ><a routerLink="/hotels">Exit</a></button>
+<button (click)="addReservation(reservation)" [disabled]="disabled">Confirm Reservation {{ reservation.reservationNumber }}</button>
+<a routerLink="/hotels"><button>Exit</button></a>
 </div>

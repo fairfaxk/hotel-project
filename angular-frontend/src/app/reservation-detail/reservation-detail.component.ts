@@ -20,6 +20,7 @@ export class ReservationDetailComponent implements OnInit {
   reservationNumber: string;
   reservation: Reservation;
   private sub:any;
+  disabled:boolean;
 
  // days:number;
 
@@ -46,15 +47,18 @@ export class ReservationDetailComponent implements OnInit {
       this.reservation.hotelName = this.hotelName;
       this.reservation.roomNumber = this.roomNumber;
       this.reservation.cost = this.cost;
+      this.disabled = false;
 
-      //.getTime should be able to convert to milliseconds from 1970, which then can be converted to days, but 
+      //.getTime should be able to convert to milliseconds from 1970, which then can be converted to days, but
       //angular doesn't think getTime() is a function
       //this.days = (this.dateTo.getTime() - this.dateFrom.getTime())/(24*60*60*1000)
   }
 
   addReservation(reservation: Reservation): void {
-      this.reservationService.addReservation(reservation).then(reservation=> this.reservation=reservation)
+      this.reservationService.addReservation(reservation).then(reservation=> this.reservation=reservation);
+      this.disabled = true;
+      alert("Your Reservation number is: " + this.reservationNumber + ".\n" + "Please save this number for your records." + "\n" + "Click exit to continue.")
   }
-  
+
 
 }
