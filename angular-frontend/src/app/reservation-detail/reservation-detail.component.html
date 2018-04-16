@@ -5,9 +5,10 @@
 	<div><span>Date To: </span>{{reservation.dateTo | date}}</div>
 	<div><span>Paid: </span>{{reservation.paid}}</div>
 	<div><span>Hotel Name: </span>{{reservation.hotelName}}</div>
-	<div><span>Cost: </span>{{reservation.cost}}</div> <!-- * reservation.days | currency}} </div>-->
+	<div><span>Cost: </span>{{reservation.cost}}<span> per night</span></div> <!-- * reservation.days | currency}} </div>-->
 
 
 <button (click)="addReservation(reservation)" style="text:left;width:200px;background-color:#4682B4;color:black"><a routerLink="/hotels">Confirm Reservation {{ reservation.reservationNumber }}</a></button>
 <button style="text:left;width:200px;background-color:#4682B4;color:black" ><a routerLink="/hotels">Exit</a></button>
 </div>
+ 
